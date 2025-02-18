@@ -30,7 +30,8 @@ def configure_page():
 @st.cache_data(show_spinner=False)
 def load_data(file_path: str) -> pd.DataFrame:
     try:
-        df = pd.read_excel(file_path, engine='xlrd')
+        # Se preferir, pode especificar engine='openpyxl'
+        df = pd.read_excel(file_path, engine='openpyxl')
         return df
     except Exception as e:
         st.error(f"Erro ao carregar dados: {e}")
