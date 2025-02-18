@@ -169,29 +169,7 @@ def display_charts(df_annual: pd.DataFrame):
                 width=800, height=400, title="Evolução dos Preços Médios Anuais"
             )
             st.altair_chart(grafico_precos, use_container_width=True)
-    
-    if mostrar_variacao:
-        with st.expander("Variação Percentual Anual", expanded=True):
-            base_pct = alt.Chart(df_annual).encode(
-                x=alt.X('year:O', title="Ano"),
-                y=alt.Y('Percentual de Aumento:Q', title="Percentual de Aumento (%)")
-            )
-            linha_pct = base_pct.mark_line(color='green').encode(
-                tooltip=[alt.Tooltip('year:O', title="Ano"),
-                         alt.Tooltip('Percentual de Aumento:Q', title="Variação (%)", format=".2f")]
-            )
-            pontos_pct = base_pct.mark_circle(color='green', size=60).encode(
-                tooltip=[alt.Tooltip('year:O', title="Ano"),
-                         alt.Tooltip('Percentual de Aumento:Q', title="Variação (%)", format=".2f")]
-            )
-            linha_zero = alt.Chart(pd.DataFrame({'y': [0]})).mark_rule(color='red').encode(y='y:Q')
-            labels_pct = base_pct.mark_text(dy=-10, color='green').encode(
-                text=alt.Text('Percentual de Aumento:Q', format=".2f")
-            )
-            grafico_pct = (linha_pct + pontos_pct + linha_zero + labels_pct).properties(
-                width=400, height=400, title="Variação Percentual Anual"
-            )
-            st.altair_chart(grafico_pct, use_container_width=True)
+
 
 # RODAPÉ E BOTÃO LINKEDIN
 def display_footer():
