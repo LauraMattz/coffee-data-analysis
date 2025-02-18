@@ -3,4 +3,4 @@ pandas
 altair
 openpyxl
 streamlit-aggrid
-xlrd
+xlrd==1.2.0
