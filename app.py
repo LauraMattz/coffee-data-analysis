@@ -3,7 +3,7 @@ import pandas as pd
 import altair as alt
 
 # CONSTANTES
-DATA_FILE = 'coffee_data.xls'
+DATA_FILE = 'coffee_data.xlsx'
 LINKEDIN_URL = "https://www.linkedin.com/in/lauramattosc/"
 UPDATE_DATE = "18/02/2025"
 
