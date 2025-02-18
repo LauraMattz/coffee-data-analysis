@@ -147,9 +147,7 @@ def display_summary_table(df_annual: pd.DataFrame):
 # EXIBIÇÃO DOS GRÁFICOS (INTERATIVOS)
 def display_charts(df_annual: pd.DataFrame):
     st.sidebar.header("Visualizações")
-    mostrar_evolucao = st.sidebar.checkbox("Evolução dos Preços Médios Anuais", value=True)
-    mostrar_variacao = st.sidebar.checkbox("Variação Percentual Anual", value=True)
-    
+    mostrar_evolucao = st.sidebar.checkbox("Evolução dos Preços Médios Anuais", value=True)    
     if mostrar_evolucao:
         with st.expander("Evolução dos Preços Médios Anuais", expanded=True):
             base_precos = alt.Chart(df_annual).encode(
