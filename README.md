@@ -5,7 +5,7 @@
 ## 📄 Visão Geral dos Arquivos
 
 - **app.py**: Contém o código principal do aplicativo Streamlit.
-- **coffee_data.xls**: Planilha XLS com os dados de café.
+- **coffee_data.xls**: Planilha XLS com os dados de café (atualizado até 2026).
 - **requirements.txt**: Lista as dependências necessárias para executar o aplicativo.
 
 ## 🛠️ Instruções de Configuração
@@ -68,4 +68,15 @@ Para mais informações, visite meu [LinkedIn](https://www.linkedin.com/in/laura
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
 
-**Data de Atualização:** 18/02/2025
+---
+
+## 📝 Changelog
+
+### 23/02/2026
+- ✅ **Dados atualizados**: Arquivo `coffee_data.xls` atualizado com dados até 2026
+- ✅ **Correções de deprecação do Streamlit**:
+  - Substituído `.applymap()` por `.map()` para compatibilidade com pandas moderno
+  - Atualizado `use_container_width` para o novo parâmetro `width` em todos os gráficos e dataframes
+  - Corrigidas 3 ocorrências de warnings de deprecação
+
+**Data de Atualização:** 23/02/2026

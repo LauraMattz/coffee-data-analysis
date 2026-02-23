@@ -141,8 +141,8 @@ def display_summary_table(df_annual: pd.DataFrame):
     resumo_anual_styled = df_annual.style.format({
         "Preco_Medio": "R$ {:.2f}",
         "Percentual de Aumento": "{:.2f}%"
-    }).applymap(color_percent, subset=['Percentual de Aumento'])
-    st.dataframe(resumo_anual_styled, use_container_width=True)
+    }).map(color_percent, subset=['Percentual de Aumento'])
+    st.dataframe(resumo_anual_styled, width='stretch')
 
 # EXIBIÇÃO DOS GRÁFICOS (INTERATIVOS)
 def display_charts(df_annual: pd.DataFrame):
@@ -168,7 +168,7 @@ def display_charts(df_annual: pd.DataFrame):
             grafico_precos = (linha_precos + pontos_precos + labels_precos).properties(
                 width=800, height=400, title="Evolução dos Preços Médios Anuais"
             )
-            st.altair_chart(grafico_precos, use_container_width=True)
+            st.altair_chart(grafico_precos, width='stretch')
 
 
 # RODAPÉ E BOTÃO LINKEDIN
@@ -235,7 +235,7 @@ def main():
         grafico_pct = (linha_pct + pontos_pct + linha_zero + labels_pct).properties(
             width=400, height=400, title="Variação Percentual Anual"
         )
-        st.altair_chart(grafico_pct, use_container_width=True)
+        st.altair_chart(grafico_pct, width='stretch')
     
     display_charts(df_annual)
     display_footer()
