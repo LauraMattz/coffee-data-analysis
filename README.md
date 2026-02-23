@@ -5,8 +5,10 @@
 ## 📄 Visão Geral dos Arquivos
 
 - **app.py**: Contém o código principal do aplicativo Streamlit.
-- **coffee_data.xls**: Planilha XLS com os dados de café (atualizado até 2026).
+- **coffee_data.xlsx**: Arquivo Excel com dados anuais do café CEPEA (2001-2026).
 - **requirements.txt**: Lista as dependências necessárias para executar o aplicativo.
+
+**Nota:** Este app trabalha com **dados anuais agregados** do CEPEA ROBUSTA, mostrando médias anuais de preços.
 
 ## 🛠️ Instruções de Configuração
 
@@ -72,11 +74,16 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para m
 
 ## 📝 Changelog
 
-### 23/02/2026
-- ✅ **Dados atualizados**: Arquivo `coffee_data.xls` atualizado com dados até 2026
+### 23/02/2026 - v2.0
+- ✅ **Dados atualizados**: Arquivo atualizado com dados anuais CEPEA até 2026 (26 anos)
 - ✅ **Correções de deprecação do Streamlit**:
   - Substituído `.applymap()` por `.map()` para compatibilidade com pandas moderno
   - Atualizado `use_container_width` para o novo parâmetro `width` em todos os gráficos e dataframes
   - Corrigidas 3 ocorrências de warnings de deprecação
+- ✅ **Adaptação para dados anuais**:
+  - App adaptado para trabalhar com médias anuais agregadas ao invés de dados diários
+  - Arquivo convertido de `.xls` (formato antigo CEPEA) para `.xlsx` processado
+  - Função `load_data()` simplificada para melhor compatibilidade
+  - Filtro de anos ajustado para 2001-2026
 
 **Data de Atualização:** 23/02/2026

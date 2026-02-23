@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import os
 
 # CONSTANTES
-DATA_FILE = "coffee_data.xls"
+DATA_FILE = "coffee_data.xlsx"  # Arquivo de dados processado do CEPEA
 LINKEDIN_URL = "https://www.linkedin.com/in/lauramattosc/"
 UPDATE_DATE = "23/02/2026"
 
@@ -29,9 +30,14 @@ def configure_page():
 # CARREGAMENTO DE DADOS
 @st.cache_data(show_spinner=False)
 def load_data(file_path: str) -> pd.DataFrame:
+    """Carrega dados do arquivo Excel do CEPEA (dados anuais agregados)."""
     try:
-        # Se preferir, pode especificar engine='openpyxl'
-        df = pd.read_excel(file_path, engine='openpyxl')
+        # Carrega arquivo XLSX processado
+        df = pd.read_excel(file_path)
+
+        # Garante que Data está em datetime
+        df['Data'] = pd.to_datetime(df['Data'])
+
         return df
     except Exception as e:
         st.error(f"Erro ao carregar dados: {e}")
@@ -39,13 +45,22 @@ def load_data(file_path: str) -> pd.DataFrame:
 
 # PRÉ-PROCESSAMENTO
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
+    """Prepara dados anuais para análise."""
     try:
-        df['Data'] = pd.to_datetime(df['Data'], dayfirst=True)
+        # Garante que Data está em datetime
+        if not pd.api.types.is_datetime64_any_dtype(df['Data']):
+            df['Data'] = pd.to_datetime(df['Data'])
     except Exception as e:
         st.error(f"Erro na conversão da coluna 'Data': {e}")
+
+    # Extrai ano
     df['year'] = df['Data'].dt.year
+
+    # Filtra anos válidos
     current_year = pd.Timestamp.now().year
-    return df[(df['year'] <= current_year) & (df['year'] >= 1995)]
+    df = df[(df['year'] <= current_year) & (df['year'] >= 2001)].copy()
+
+    return df
 
 # FILTROS INTERATIVOS NA SIDEBAR
 def filter_data(df: pd.DataFrame) -> pd.DataFrame:

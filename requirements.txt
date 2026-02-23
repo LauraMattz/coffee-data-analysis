@@ -4,3 +4,5 @@ altair
 openpyxl
 streamlit-aggrid
 xlrd==1.2.0
+html5lib
+lxml
