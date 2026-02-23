@@ -5,7 +5,7 @@ import altair as alt
 # CONSTANTES
 DATA_FILE = "coffee_data.xls"
 LINKEDIN_URL = "https://www.linkedin.com/in/lauramattosc/"
-UPDATE_DATE = "18/02/2025"
+UPDATE_DATE = "23/02/2026"
 
 # CONFIGURAÇÕES E CSS
 def configure_page():
@@ -242,3 +242,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
